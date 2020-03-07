@@ -75,6 +75,36 @@ class Test2048(unittest.TestCase):
         ]
         self.assertEqual(is_zero_in_mas(mas), True)
 
+    def test_12(self):
+        mas = [
+            [2, 2, 0, 0],
+            [0, 4, 4, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+        ]
+        rez = [
+            [4, 0, 0, 0],
+            [8, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+        ]
+        self.assertEqual(move_left(mas), rez)
+
+    def test_13(self):
+        mas = [
+            [2, 4, 4, 2],
+            [4, 0, 0, 2],
+            [0, 0, 0, 0],
+            [8, 8, 4, 4],
+        ]
+        rez = [
+            [2, 8, 2, 0],
+            [4, 2, 0, 0],
+            [0, 0, 0, 0],
+            [16, 8, 0, 0],
+        ]
+        self.assertEqual(move_left(mas), rez)
+
 if __name__ == 'main':
     unittest.main()
 
