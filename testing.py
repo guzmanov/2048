@@ -1,6 +1,7 @@
 import unittest
 from logics import *
 
+
 class Test2048(unittest.TestCase):
 
     def test_1(self):
@@ -88,7 +89,7 @@ class Test2048(unittest.TestCase):
             [0, 0, 0, 0],
             [0, 0, 0, 0],
         ]
-        self.assertEqual(move_left(mas), rez)
+        self.assertEqual(move_left(mas), (rez, 12))
 
     def test_13(self):
         mas = [
@@ -103,7 +104,55 @@ class Test2048(unittest.TestCase):
             [0, 0, 0, 0],
             [16, 8, 0, 0],
         ]
-        self.assertEqual(move_left(mas), rez)
+        self.assertEqual(move_left(mas), (rez, 32))
+
+    def test_14(self):
+        mas = [
+            [2, 4, 0, 2],
+            [2, 0, 2, 0],
+            [4, 0, 2, 4],
+            [4, 4, 0, 0],
+        ]
+        rez = [
+            [4, 8, 4, 2],
+            [8, 0, 0, 4],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+        ]
+        self.assertEqual(move_up(mas), rez)
+
+    def test_15(self):
+        mas = [
+            [2, 4, 0, 2],
+            [2, 0, 2, 0],
+            [4, 0, 2, 4],
+            [4, 4, 0, 0],
+        ]
+        rez = [
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [4, 0, 0, 2],
+            [8, 8, 4, 4],
+        ]
+        self.assertEqual(move_down(mas), rez)
+
+    def test_16(self):
+        mas = [
+            [2, 4, 2, 2],
+            [2, 8, 2, 4],
+            [4, 8, 2, 4],
+            [4, 4, 2, 4],
+        ]
+        self.assertEqual(can_move(mas), True)
+
+    def test_17(self):
+        mas = [
+            [2, 4, 8, 16],
+            [32, 64, 128, 256],
+            [2, 4, 8, 16],
+            [32, 64, 128, 256],
+        ]
+        self.assertEqual(can_move(mas), False)
 
 if __name__ == 'main':
     unittest.main()
